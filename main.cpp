@@ -19,7 +19,7 @@ class Vehicle {
         // виртуальный метод: каждый потомок обязан реализовать свою реализацию
         virtual void print(std::ostream& outputStream) const = 0;
 
-        virtual bool matchesCondition(const std::string& field, const std::string& operation, const std::string& val) const {
+        [[nodiscard]] virtual bool matchesCondition(const std::string& field, const std::string& operation, const std::string& val) const {
             if (field == "power") {
                 int target = std::stoi(val);
                 if (operation == ">") {
@@ -57,7 +57,7 @@ class Truck : public Vehicle {
                << ", Грузоподъемность: " << payload << " кг";
         }
 
-        bool matchesCondition(const std::string& field, const std::string& operation, const std::string& val) const override {
+        [[nodiscard]] bool matchesCondition(const std::string& field, const std::string& operation, const std::string& val) const override {
             if (Vehicle::matchesCondition(field, operation, val)) {
                 return true;
             }
@@ -91,7 +91,7 @@ class Bus : public Vehicle {
                << ", Вместимость: " << capacity << " пасс.";
         }
 
-        bool matchesCondition(const std::string& field, const std::string& operation, const std::string& val) const override {
+        [[nodiscard]] bool matchesCondition(const std::string& field, const std::string& operation, const std::string& val) const override {
             if (Vehicle::matchesCondition(field, operation, val)) {
                 return true;
             }
@@ -126,7 +126,7 @@ class Car : public Vehicle {
                << ", Макс. скорость: " << maxSpeed << " км/ч";
         }
 
-        bool matchesCondition(const std::string& field, const std::string& operation, const std::string& val) const override {
+        [[nodiscard]] bool matchesCondition(const std::string& field, const std::string& operation, const std::string& val) const override {
             if (Vehicle::matchesCondition(field, operation, val)) {
                 return true;
             }
