@@ -1,0 +1,193 @@
+/mnt/hardDrive/shared/ikit/7sem/opppo/3/main.cpp:16:21: warning: parameter name 'p' is too short, expected at least 3 characters [readability-identifier-length]
+   16 |         Vehicle(int p, std::string c) : power(p), country(std::move(c)) {}
+      |                     ^
+/mnt/hardDrive/shared/ikit/7sem/opppo/3/main.cpp:16:36: warning: parameter name 'c' is too short, expected at least 3 characters [readability-identifier-length]
+   16 |         Vehicle(int p, std::string c) : power(p), country(std::move(c)) {}
+      |                                    ^
+/mnt/hardDrive/shared/ikit/7sem/opppo/3/main.cpp:20:42: warning: parameter name 'os' is too short, expected at least 3 characters [readability-identifier-length]
+   20 |         virtual void print(std::ostream& os) const = 0;
+      |                                          ^
+/mnt/hardDrive/shared/ikit/7sem/opppo/3/main.cpp:22:9: warning: function 'matchesCondition' should be marked [[nodiscard]] [modernize-use-nodiscard]
+   22 |         virtual bool matchesCondition(const std::string& field, const std::string& op, const std::string& val) const {
+      |         ^
+      |         [[nodiscard]] 
+/mnt/hardDrive/shared/ikit/7sem/opppo/3/main.cpp:22:22: warning: use a trailing return type for this function [modernize-use-trailing-return-type]
+   22 |         virtual bool matchesCondition(const std::string& field, const std::string& op, const std::string& val) const {
+      |                 ~~~~ ^
+      |                 auto                                                                                                 -> bool
+/mnt/hardDrive/shared/ikit/7sem/opppo/3/main.cpp:22:84: warning: parameter name 'op' is too short, expected at least 3 characters [readability-identifier-length]
+   22 |         virtual bool matchesCondition(const std::string& field, const std::string& op, const std::string& val) const {
+      |                                                                                    ^
+/mnt/hardDrive/shared/ikit/7sem/opppo/3/main.cpp:25:31: warning: statement should be inside braces [readability-braces-around-statements]
+   25 |                 if (op == ">") return power > target;
+      |                               ^                      
+      |                                {
+/mnt/hardDrive/shared/ikit/7sem/opppo/3/main.cpp:26:31: warning: statement should be inside braces [readability-braces-around-statements]
+   26 |                 if (op == "<") return power < target;
+      |                               ^                      
+      |                                {
+/mnt/hardDrive/shared/ikit/7sem/opppo/3/main.cpp:27:32: warning: statement should be inside braces [readability-braces-around-statements]
+   27 |                 if (op == "==") return power == target;
+      |                                ^                       
+      |                                 {
+/mnt/hardDrive/shared/ikit/7sem/opppo/3/main.cpp:29:32: warning: statement should be inside braces [readability-braces-around-statements]
+   29 |                 if (op == "==") return country == val;
+      |                                ^                      
+      |                                 {
+/mnt/hardDrive/shared/ikit/7sem/opppo/3/main.cpp:30:32: warning: statement should be inside braces [readability-braces-around-statements]
+   30 |                 if (op == "!=") return country != val;
+      |                                ^                      
+      |                                 {
+/mnt/hardDrive/shared/ikit/7sem/opppo/3/main.cpp:41:19: warning: parameter name 'p' is too short, expected at least 3 characters [readability-identifier-length]
+   41 |         Truck(int p, std::string c, int load)
+      |                   ^
+/mnt/hardDrive/shared/ikit/7sem/opppo/3/main.cpp:41:34: warning: parameter name 'c' is too short, expected at least 3 characters [readability-identifier-length]
+   41 |         Truck(int p, std::string c, int load)
+      |                                  ^
+/mnt/hardDrive/shared/ikit/7sem/opppo/3/main.cpp:44:34: warning: parameter name 'os' is too short, expected at least 3 characters [readability-identifier-length]
+   44 |         void print(std::ostream& os) const override {
+      |                                  ^
+/mnt/hardDrive/shared/ikit/7sem/opppo/3/main.cpp:50:9: warning: function 'matchesCondition' should be marked [[nodiscard]] [modernize-use-nodiscard]
+   50 |         bool matchesCondition(const std::string& field, const std::string& op, const std::string& val) const override {
+      |         ^
+      |         [[nodiscard]] 
+/mnt/hardDrive/shared/ikit/7sem/opppo/3/main.cpp:50:14: warning: use a trailing return type for this function [modernize-use-trailing-return-type]
+   50 |         bool matchesCondition(const std::string& field, const std::string& op, const std::string& val) const override {
+      |         ~~~~ ^
+      |         auto                                                                                                 -> bool
+/mnt/hardDrive/shared/ikit/7sem/opppo/3/main.cpp:50:76: warning: parameter name 'op' is too short, expected at least 3 characters [readability-identifier-length]
+   50 |         bool matchesCondition(const std::string& field, const std::string& op, const std::string& val) const override {
+      |                                                                            ^
+/mnt/hardDrive/shared/ikit/7sem/opppo/3/main.cpp:51:59: warning: statement should be inside braces [readability-braces-around-statements]
+   51 |             if (Vehicle::matchesCondition(field, op, val)) return true;
+      |                                                           ^            
+      |                                                            {
+/mnt/hardDrive/shared/ikit/7sem/opppo/3/main.cpp:54:31: warning: statement should be inside braces [readability-braces-around-statements]
+   54 |                 if (op == ">") return payload > target;
+      |                               ^                        
+      |                                {
+/mnt/hardDrive/shared/ikit/7sem/opppo/3/main.cpp:55:31: warning: statement should be inside braces [readability-braces-around-statements]
+   55 |                 if (op == "<") return payload < target;
+      |                               ^                        
+      |                                {
+/mnt/hardDrive/shared/ikit/7sem/opppo/3/main.cpp:56:32: warning: statement should be inside braces [readability-braces-around-statements]
+   56 |                 if (op == "==") return payload == target;
+      |                                ^                         
+      |                                 {
+/mnt/hardDrive/shared/ikit/7sem/opppo/3/main.cpp:67:17: warning: parameter name 'p' is too short, expected at least 3 characters [readability-identifier-length]
+   67 |         Bus(int p, std::string c, short cap)
+      |                 ^
+/mnt/hardDrive/shared/ikit/7sem/opppo/3/main.cpp:67:32: warning: parameter name 'c' is too short, expected at least 3 characters [readability-identifier-length]
+   67 |         Bus(int p, std::string c, short cap)
+      |                                ^
+/mnt/hardDrive/shared/ikit/7sem/opppo/3/main.cpp:70:34: warning: parameter name 'os' is too short, expected at least 3 characters [readability-identifier-length]
+   70 |         void print(std::ostream& os) const override {
+      |                                  ^
+/mnt/hardDrive/shared/ikit/7sem/opppo/3/main.cpp:76:9: warning: function 'matchesCondition' should be marked [[nodiscard]] [modernize-use-nodiscard]
+   76 |         bool matchesCondition(const std::string& field, const std::string& op, const std::string& val) const override {
+      |         ^
+      |         [[nodiscard]] 
+/mnt/hardDrive/shared/ikit/7sem/opppo/3/main.cpp:76:14: warning: use a trailing return type for this function [modernize-use-trailing-return-type]
+   76 |         bool matchesCondition(const std::string& field, const std::string& op, const std::string& val) const override {
+      |         ~~~~ ^
+      |         auto                                                                                                 -> bool
+/mnt/hardDrive/shared/ikit/7sem/opppo/3/main.cpp:76:76: warning: parameter name 'op' is too short, expected at least 3 characters [readability-identifier-length]
+   76 |         bool matchesCondition(const std::string& field, const std::string& op, const std::string& val) const override {
+      |                                                                            ^
+/mnt/hardDrive/shared/ikit/7sem/opppo/3/main.cpp:77:59: warning: statement should be inside braces [readability-braces-around-statements]
+   77 |             if (Vehicle::matchesCondition(field, op, val)) return true;
+      |                                                           ^            
+      |                                                            {
+/mnt/hardDrive/shared/ikit/7sem/opppo/3/main.cpp:80:31: warning: statement should be inside braces [readability-braces-around-statements]
+   80 |                 if (op == ">") return capacity > target;
+      |                               ^                         
+      |                                {
+/mnt/hardDrive/shared/ikit/7sem/opppo/3/main.cpp:81:31: warning: statement should be inside braces [readability-braces-around-statements]
+   81 |                 if (op == "<") return capacity < target;
+      |                               ^                         
+      |                                {
+/mnt/hardDrive/shared/ikit/7sem/opppo/3/main.cpp:82:32: warning: statement should be inside braces [readability-braces-around-statements]
+   82 |                 if (op == "==") return capacity == target;
+      |                                ^                          
+      |                                 {
+/mnt/hardDrive/shared/ikit/7sem/opppo/3/main.cpp:94:17: warning: parameter name 'p' is too short, expected at least 3 characters [readability-identifier-length]
+   94 |         Car(int p, std::string c, int d, int s)
+      |                 ^
+/mnt/hardDrive/shared/ikit/7sem/opppo/3/main.cpp:94:32: warning: parameter name 'c' is too short, expected at least 3 characters [readability-identifier-length]
+   94 |         Car(int p, std::string c, int d, int s)
+      |                                ^
+/mnt/hardDrive/shared/ikit/7sem/opppo/3/main.cpp:94:39: warning: parameter name 'd' is too short, expected at least 3 characters [readability-identifier-length]
+   94 |         Car(int p, std::string c, int d, int s)
+      |                                       ^
+/mnt/hardDrive/shared/ikit/7sem/opppo/3/main.cpp:94:46: warning: parameter name 's' is too short, expected at least 3 characters [readability-identifier-length]
+   94 |         Car(int p, std::string c, int d, int s)
+      |                                              ^
+/mnt/hardDrive/shared/ikit/7sem/opppo/3/main.cpp:97:34: warning: parameter name 'os' is too short, expected at least 3 characters [readability-identifier-length]
+   97 |         void print(std::ostream& os) const override {
+      |                                  ^
+/mnt/hardDrive/shared/ikit/7sem/opppo/3/main.cpp:104:9: warning: function 'matchesCondition' should be marked [[nodiscard]] [modernize-use-nodiscard]
+  104 |         bool matchesCondition(const std::string& field, const std::string& op, const std::string& val) const override {
+      |         ^
+      |         [[nodiscard]] 
+/mnt/hardDrive/shared/ikit/7sem/opppo/3/main.cpp:104:14: warning: use a trailing return type for this function [modernize-use-trailing-return-type]
+  104 |         bool matchesCondition(const std::string& field, const std::string& op, const std::string& val) const override {
+      |         ~~~~ ^
+      |         auto                                                                                                 -> bool
+/mnt/hardDrive/shared/ikit/7sem/opppo/3/main.cpp:104:76: warning: parameter name 'op' is too short, expected at least 3 characters [readability-identifier-length]
+  104 |         bool matchesCondition(const std::string& field, const std::string& op, const std::string& val) const override {
+      |                                                                            ^
+/mnt/hardDrive/shared/ikit/7sem/opppo/3/main.cpp:105:59: warning: statement should be inside braces [readability-braces-around-statements]
+  105 |             if (Vehicle::matchesCondition(field, op, val)) return true;
+      |                                                           ^            
+      |                                                            {
+/mnt/hardDrive/shared/ikit/7sem/opppo/3/main.cpp:108:32: warning: statement should be inside braces [readability-braces-around-statements]
+  108 |                 if (op == "==") return doors == target;
+      |                                ^                       
+      |                                 {
+/mnt/hardDrive/shared/ikit/7sem/opppo/3/main.cpp:111:31: warning: statement should be inside braces [readability-braces-around-statements]
+  111 |                 if (op == ">") return maxSpeed > target;
+      |                               ^                         
+      |                                {
+/mnt/hardDrive/shared/ikit/7sem/opppo/3/main.cpp:112:31: warning: statement should be inside braces [readability-braces-around-statements]
+  112 |                 if (op == "<") return maxSpeed < target;
+      |                               ^                         
+      |                                {
+/mnt/hardDrive/shared/ikit/7sem/opppo/3/main.cpp:113:32: warning: statement should be inside braces [readability-braces-around-statements]
+  113 |                 if (op == "==") return maxSpeed == target;
+      |                                ^                          
+      |                                 {
+/mnt/hardDrive/shared/ikit/7sem/opppo/3/main.cpp:119:5: warning: use a trailing return type for this function [modernize-use-trailing-return-type]
+  119 | int main() {
+      | ~~~ ^
+      | auto       -> int
+/mnt/hardDrive/shared/ikit/7sem/opppo/3/main.cpp:126:71: warning: do not use 'std::endl' with streams; use '\n' instead [performance-avoid-endl]
+  126 |         std::cerr << "Не удалось открыть файл" << std::endl;
+      |                                                   ^~~~~~~~~
+      |                                                   '\n'
+/mnt/hardDrive/shared/ikit/7sem/opppo/3/main.cpp:133:26: warning: statement should be inside braces [readability-braces-around-statements]
+  133 |         if (line.empty()) continue;
+      |                          ^         
+      |                           {
+/mnt/hardDrive/shared/ikit/7sem/opppo/3/main.cpp:135:27: warning: variable name 'ss' is too short, expected at least 3 characters [readability-identifier-length]
+  135 |         std::stringstream ss(line);
+      |                           ^
+/mnt/hardDrive/shared/ikit/7sem/opppo/3/main.cpp:164:13: warning: multiple declarations in a single statement reduces readability [readability-isolate-declaration]
+  164 |             std::string field, op, val;
+      |             ^~~~~~~~~~~~~~~~~~~~~~~~~~~
+/mnt/hardDrive/shared/ikit/7sem/opppo/3/main.cpp:164:32: warning: variable name 'op' is too short, expected at least 3 characters [readability-identifier-length]
+  164 |             std::string field, op, val;
+      |                                ^
+/mnt/hardDrive/shared/ikit/7sem/opppo/3/main.cpp:169:57: warning: parameter name 'v' is too short, expected at least 3 characters [readability-identifier-length]
+  169 |                     [&](const std::unique_ptr<Vehicle>& v) {
+      |                                                         ^
+/mnt/hardDrive/shared/ikit/7sem/opppo/3/main.cpp:176:83: warning: do not use 'std::endl' with streams; use '\n' instead [performance-avoid-endl]
+  176 |             std::cout << "\n=== Автопарк (" << depot.size() << ") ===" << std::endl;
+      |                                                                           ^~~~~~~~~
+      |                                                                           '\n'
+/mnt/hardDrive/shared/ikit/7sem/opppo/3/main.cpp:178:30: warning: variable name 'v' is too short, expected at least 3 characters [readability-identifier-length]
+  178 |             for (const auto& v : depot) {
+      |                              ^
+/mnt/hardDrive/shared/ikit/7sem/opppo/3/main.cpp:180:30: warning: do not use 'std::endl' with streams; use '\n' instead [performance-avoid-endl]
+  180 |                 std::cout << std::endl;
+      |                              ^~~~~~~~~
+      |                              '\n'

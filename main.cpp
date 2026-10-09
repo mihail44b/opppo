@@ -123,7 +123,7 @@ int main() {
 
     std::ifstream file("commands.txt");
     if (!file.is_open()) {
-        std::cerr << "Не удалось открыть файл" << std::endl;
+        std::cerr << "Не удалось открыть файл" << "\n";
         return 1;
     }
 
@@ -173,11 +173,11 @@ int main() {
             );
         }
         else if (command == "PRINT") {
-            std::cout << "\n=== Автопарк (" << depot.size() << ") ===" << std::endl;
+            std::cout << "\n=== Автопарк (" << depot.size() << ") ===" << "\n";
 
             for (const auto& v : depot) {
                 v->print(std::cout);
-                std::cout << std::endl;
+                std::cout << "\n";
             }
         }
     }
