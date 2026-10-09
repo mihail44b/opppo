@@ -5,13 +5,30 @@
 #include <memory>
 #include <vector>
 #include <sstream>
-#include <algorithm>
 
 // base class
 class Vehicle {
     protected:
         int power;
         std::string country;
+
+        static bool compareNumbers(int actual, const std::string& operation, const std::string& val) {
+            try {
+                int target = std::stoi(val);
+                if (operation == ">") {
+                    return actual > target;
+                }
+                else if (operation == "<") {
+                    return actual < target;
+                }
+                else if (operation == "==") {
+                    return actual == target;
+                }
+            } catch (...) {
+                return false;
+            }
+            return false;
+        }
     public:
         Vehicle(int powerVal, std::string countryVal) : power(powerVal), country(std::move(countryVal)) {}
         virtual ~Vehicle() = default;
@@ -21,16 +38,7 @@ class Vehicle {
 
         [[nodiscard]] virtual bool matchesCondition(const std::string& field, const std::string& operation, const std::string& val) const {
             if (field == "power") {
-                int target = std::stoi(val);
-                if (operation == ">") {
-                    return power > target;
-                }
-                if (operation == "<") {
-                    return power < target;
-                }
-                if (operation == "==") {
-                    return power == target;
-                }
+                return compareNumbers(power, operation, val);
             } else if (field == "country") {
                 if (operation == "==") {
                     return country == val;
@@ -62,16 +70,7 @@ class Truck : public Vehicle {
                 return true;
             }
             if (field == "payload") {
-                int target = std::stoi(val);
-                if (operation == ">") {
-                    return payload > target;
-                }
-                if (operation == "<") {
-                    return payload < target;
-                }
-                if (operation == "==") {
-                    return payload == target;
-                }
+                return compareNumbers(payload, operation, val);
             }
             return false;
         }
@@ -96,15 +95,7 @@ class Bus : public Vehicle {
                 return true;
             }
             if (field == "capacity") {
-                int target = std::stoi(val);
-                if (operation == ">") {
-                    return capacity > target;}
-                if (operation == "<") {
-                    return capacity < target;
-                }
-                if (operation == "==") {
-                    return capacity == target;
-                }
+                return compareNumbers(capacity, operation, val);
             }
             return false;
         }
@@ -131,97 +122,98 @@ class Car : public Vehicle {
                 return true;
             }
             if (field == "doors") {
-                int target = std::stoi(val);
-                if (operation == "==") {
-                    return doors == target;
-                }
-            } else if (field == "speed") {
-                int target = std::stoi(val);
-                if (operation == ">") {
-                    return maxSpeed > target;
-                }
-                if (operation == "<") {
-                    return maxSpeed < target;
-                }
-                if (operation == "==") {
-                    return maxSpeed == target;
-                }
+                return compareNumbers(doors, operation, val);
+            }
+            if (field == "speed") {
+                return compareNumbers(maxSpeed, operation, val);
             }
             return false;
+        }
+};
+
+class Depot {
+    private:
+        std::vector<std::unique_ptr<Vehicle>> vehicles;
+    public:
+        void add(std::unique_ptr<Vehicle> vehicle) {
+            vehicles.push_back(std::move(vehicle));
+        }
+
+        void removeByCondition(const std::string& field, const std::string& operation, const std::string& val) {
+            // по стандарту c++20 используем erase_if вместо erase + remove_if
+            std::erase_if(vehicles, [&](const auto& item) {
+                return item->matchesCondition(field, operation, val);
+            });
+        }
+
+        void printAll(std::ostream& outputStream) const {
+            outputStream << "\n=== Автопарк (" << vehicles.size() << ") ===\n";
+            for (const auto& item : vehicles) {
+                item->print(outputStream);
+                outputStream << "\n";
+            }
         }
 };
 
 int main() {
     std::setlocale(LC_ALL, ".UTF-8");
 
-    std::vector<std::unique_ptr<Vehicle>> depot;
+        Depot depot;
 
-    std::ifstream file("commands.txt");
-    if (!file.is_open()) {
-        std::cerr << "Не удалось открыть файл" << "\n";
-        return 1;
-    }
-
-    std::string line;
-
-    while (std::getline(file, line)) {
-        if (line.empty()) {
-            continue;
+        std::ifstream file("commands.txt");
+        if (!file.is_open()) {
+            std::cerr << "Не удалось открыть файл" << "\n";
+            return 1;
         }
 
-        std::stringstream stream(line);
-        std::string command;
-        stream >> command;
+        std::string line;
 
-        if (command == "ADD") {
-            std::string type;
-            int power;
-            std::string country;
-
-            stream >> type >> power >> country;
-
-            if (type == "TRUCK") {
-                int payload;
-                stream >> payload;
-                depot.push_back(std::make_unique<Truck>(power, country, payload));
+        while (std::getline(file, line)) {
+            if (line.empty()) {
+                continue;
             }
-            else if (type == "BUS") {
-                short capacity;
-                stream >> capacity;
-                depot.push_back(std::make_unique<Bus>(power, country, capacity));
+
+            std::stringstream stream(line);
+            std::string command;
+            stream >> command;
+
+            if (command == "ADD") {
+                std::string type;
+                int power;
+                std::string country;
+
+                stream >> type >> power >> country;
+
+                if (type == "TRUCK") {
+                    int payload;
+                    stream >> payload;
+                    depot.add(std::make_unique<Truck>(power, country, payload));
+                }
+                else if (type == "BUS") {
+                    short capacity;
+                    stream >> capacity;
+                    depot.add(std::make_unique<Bus>(power, country, capacity));
+                }
+                else if (type == "CAR") {
+                    int doors;
+                    int speed;
+                    stream >> doors >> speed;
+                    depot.add(std::make_unique<Car>(power, country, doors, speed));
+                }
             }
-            else if (type == "CAR") {
-                int doors;
-                int speed;
-                stream >> doors >> speed;
-                depot.push_back(std::make_unique<Car>(power, country, doors, speed));
+            else if (command == "REM") {
+                std::string field;
+                std::string operation;
+                std::string val;
+
+                stream >> field >> operation >> val;
+
+                depot.removeByCondition(field, operation, val);
             }
-        }
-        else if (command == "REM") {
-
-            std::string field;
-            std::string operation;
-            std::string val;
-
-            stream >> field >> operation >> val;
-
-            depot.erase(
-                std::remove_if(depot.begin(), depot.end(),
-                    [&](const std::unique_ptr<Vehicle>& item) {
-                        return item->matchesCondition(field, operation, val);
-                    }),
-                depot.end()
-            );
-        }
-        else if (command == "PRINT") {
-            std::cout << "\n=== Автопарк (" << depot.size() << ") ===" << "\n";
-
-            for (const auto& item : depot) {
-                item->print(std::cout);
-                std::cout << "\n";
+            else if (command == "PRINT") {
+                depot.printAll(std::cout);
             }
         }
-    }
 
-    return 0;
+        return 0;
 }
