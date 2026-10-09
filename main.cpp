@@ -22,12 +22,22 @@ class Vehicle {
         virtual bool matchesCondition(const std::string& field, const std::string& operation, const std::string& val) const {
             if (field == "power") {
                 int target = std::stoi(val);
-                if (operation == ">") return power > target;
-                if (operation == "<") return power < target;
-                if (operation == "==") return power == target;
+                if (operation == ">") {
+                    return power > target;
+                }
+                if (operation == "<") {
+                    return power < target;
+                }
+                if (operation == "==") {
+                    return power == target;
+                }
             } else if (field == "country") {
-                if (operation == "==") return country == val;
-                if (operation == "!=") return country != val;
+                if (operation == "==") {
+                    return country == val;
+                }
+                if (operation == "!=") {
+                    return country != val;
+                }
             }
             return false;
         }
@@ -48,12 +58,20 @@ class Truck : public Vehicle {
         }
 
         bool matchesCondition(const std::string& field, const std::string& operation, const std::string& val) const override {
-            if (Vehicle::matchesCondition(field, operation, val)) return true;
+            if (Vehicle::matchesCondition(field, operation, val)) {
+                return true;
+            }
             if (field == "payload") {
                 int target = std::stoi(val);
-                if (operation == ">") return payload > target;
-                if (operation == "<") return payload < target;
-                if (operation == "==") return payload == target;
+                if (operation == ">") {
+                    return payload > target;
+                }
+                if (operation == "<") {
+                    return payload < target;
+                }
+                if (operation == "==") {
+                    return payload == target;
+                }
             }
             return false;
         }
@@ -74,12 +92,19 @@ class Bus : public Vehicle {
         }
 
         bool matchesCondition(const std::string& field, const std::string& operation, const std::string& val) const override {
-            if (Vehicle::matchesCondition(field, operation, val)) return true;
+            if (Vehicle::matchesCondition(field, operation, val)) {
+                return true;
+            }
             if (field == "capacity") {
                 int target = std::stoi(val);
-                if (operation == ">") return capacity > target;
-                if (operation == "<") return capacity < target;
-                if (operation == "==") return capacity == target;
+                if (operation == ">") {
+                    return capacity > target;}
+                if (operation == "<") {
+                    return capacity < target;
+                }
+                if (operation == "==") {
+                    return capacity == target;
+                }
             }
             return false;
         }
@@ -102,15 +127,25 @@ class Car : public Vehicle {
         }
 
         bool matchesCondition(const std::string& field, const std::string& operation, const std::string& val) const override {
-            if (Vehicle::matchesCondition(field, operation, val)) return true;
+            if (Vehicle::matchesCondition(field, operation, val)) {
+                return true;
+            }
             if (field == "doors") {
                 int target = std::stoi(val);
-                if (operation == "==") return doors == target;
+                if (operation == "==") {
+                    return doors == target;
+                }
             } else if (field == "speed") {
                 int target = std::stoi(val);
-                if (operation == ">") return maxSpeed > target;
-                if (operation == "<") return maxSpeed < target;
-                if (operation == "==") return maxSpeed == target;
+                if (operation == ">") {
+                    return maxSpeed > target;
+                }
+                if (operation == "<") {
+                    return maxSpeed < target;
+                }
+                if (operation == "==") {
+                    return maxSpeed == target;
+                }
             }
             return false;
         }
@@ -130,7 +165,9 @@ int main() {
     std::string line;
 
     while (std::getline(file, line)) {
-        if (line.empty()) continue;
+        if (line.empty()) {
+            continue;
+        }
 
         std::stringstream stream(line);
         std::string command;
@@ -161,7 +198,11 @@ int main() {
             }
         }
         else if (command == "REM") {
-            std::string field, operation, val;
+
+            std::string field;
+            std::string operation;
+            std::string val;
+
             stream >> field >> operation >> val;
 
             depot.erase(
