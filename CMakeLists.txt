@@ -3,7 +3,7 @@ cmake_minimum_required(VERSION 4.4)
 project(VehicleDepot LANGUAGES CXX)
 
 set(CMAKE_CXX_STANDART 20)
-set(CMAKE_CXX_STANDART_REQUIRED ON)
+set(CMAKE_CXX_STANDARD_REQUIRED ON)
 
 add_executable(app
   main.cpp
